@@ -365,10 +365,23 @@ button:focus {
     background: transparent;
     padding: 0px 25px;
 }
-
+.logo_man{
+    position:absolute;
+    background: url("../image/bis.png") no-repeat;
+    float: right;
+    height:100%;
+    margin-left:340px;
+}
 .navbar .logo_h {
     color: white;
     padding-top: 0px;
+    background: url("../image/Logo.png") no-repeat;
+    width: 300px;
+    height: 117px;
+   -webkit-filter: drop-shadow(0.5px 0.5px 0 black)
+                  drop-shadow(-0.5px -0.5px 0 black);
+  filter: drop-shadow(0.5px 0.5px 0 black) 
+          drop-shadow(-0.5px -0.5px 0 black);
 }
 
 .navbar .logo:hover,
@@ -3758,4 +3771,38 @@ h6 {
     align-items: center; 
     padding-left:20px;
     padding-top: 10px;
+}
+
+
+.logo_dash_ok{
+  
+   background-image: url('image/Logo.png');
+   width: 300px;
+   -webkit-filter: drop-shadow(0.5px 0.5px 0 black)
+                  drop-shadow(-0.5px -0.5px 0 black);
+  filter: drop-shadow(0.5px 0.5px 0 black) 
+          drop-shadow(-0.5px -0.5px 0 black);
+   
+}
+
+
+.box6 {
+    /* position: relative; */
+    margin-top: 20px;
+
+    margin-left: 15px;
+    margin-right: 100px;
+    height: 100px;
+    border-radius: 10px;
+     background-color:rgb(155, 175, 206);
+}
+.box5 {
+    /* position: relative; */
+    margin-top: 20px;
+
+    margin-left: 100px;
+    margin-right: 15px;
+    height: 100px;
+    border-radius: 10px;
+     background-color:rgb(155, 175, 206);
 }

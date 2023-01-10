@@ -36,8 +36,7 @@ active
   </div>
     <a class=" alright btn btn-dark" style="margin-left: 15px" href="{{route('kelurahan.create')}}" >Tambah Data</a>
               
-    <a class="alright btn btn-info" href="{{ route('kota_malang.show',$tampil->id) }}">{{$tampil->kecamatan}}</a>
-
+   
 </div>
   </div>
 <div class="row">
@@ -70,30 +69,15 @@ active
                   <thead>
                     <tr>
                       
-                      <th>Nama Kecamatan</th>
+                      {{-- <th>Nama Kecamatan</th> --}}
                       {{-- <th>id</th> --}}
-                      <th></th>
+                      {{-- <th></th> --}}
                       
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($kotamalang as $tampil)
-                    <tr>
-                      <td style="width: 100%">{{$tampil->kecamatan}}</td>
-                      {{-- <td style="width: 100%">{{$tampil->id}}</td> --}}
-                      <td>
-
-                       {{-- <a class="btn btn-info" href="{{ route('kota_malang.show',$tampil->id) }}"><span class="fa fa-book"></a> --}}
-                        {{-- <form action="{{route('kota_malang.destroy', $tampil->id)}}" method="post">
-                           <a href="{{url('/kota_malang/'.$tampil->id.'/edit')}}"
-                        class="btn btn-info"><span class="fa fa-edit (alias)"></span></a>
-                        {{csrf_field()}}
-                        {{method_field('DELETE')}}
-                        <button class="btn btn-danger" type="submit" ><span class="fa fa-trash"></span></button>
-                        </form> --}}
-                      </td>
-
-                    </tr>
+                    
                     @endforeach
 
                   </tbody>

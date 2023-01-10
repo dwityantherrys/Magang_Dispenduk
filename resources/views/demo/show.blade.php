@@ -1,5 +1,5 @@
 @extends('main.header')
-@section('InfoVaksin')
+
 @section('konten')
         <!--================Breadcrumb Area =================-->
         <section class="breadcrumb_area">
@@ -14,7 +14,7 @@
                 <div class=" text-center" style="background-color:#0F285C;border: 2px solid;border-color:black;height:200px;border-radius:10px; position:relative">
                    <img src="image/bis.png" style="position:absolute;float: right;height:100%;margin-left:340px">
                    <div class="row" style="margin-left:15px">
-                  <div class="demobox" style="float: left;padding-top:15px;padding-left:15px"> <h3>Jumlah Penduduk</h3></div>
+                  <div class="demobox" style="float: left;padding-top:15px;padding-left:15px"> <h3>Data Penduduk Kelurahan {{$kecamatan->kelurahan}}</h3></div>
                    </div>
                    <div class="row" style="margin-left:15px">
                   <div class="demobox" style="float: left;padding-top:15px;padding-left:15px"> 
@@ -45,26 +45,17 @@
                 </div>
                     
                  
-                 <div class="row">
-                    <div class="col-6" style="color:black;font-weight:bold;padding-top:15px;padding-bottom:15px">Kecamatan</div>
+                 <div class="row" >
+                   
                     <div class="col-6" style="color:black;font-weight:bold;padding-top:15px;padding-bottom:15px">Kelurahan</div>
-                    
-                     <div class="w-100"></div>
-          <div class="dropdown col-6">
-  <button class="alleft btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" 
-  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" alt="kecamatan" 
-  placeholder="kecamatan" style="width:80%; border:1px solid;">
- 
-  </button>
-  <div class=" dropdown-menu" aria-labelledby="dropdownMenu2">
-      @foreach($kotamalang as $tampil)
-     
-    <a class="btn btn-info" href="{{ route('kota_malang.show',$tampil->id) }}">{{$tampil->kecamatan}}</a>
-    <br>
+                    @foreach($kecamatan as $tampil)
+    
+    
    @endforeach
-  </div>
-</div>
-<div class="col-6">
+   
+                     <div class="w-100"></div>
+          
+<div class="col-6" style="margin-top:12px" >
   <button class="alright btn btn-light dropdown-toggle" type="button" 
   id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
   alt="kelurahan" aria-placeholder="kelurahan" style="width:80%; border:1px solid;">
@@ -76,19 +67,111 @@
     overflow-x: hidden;
     width:76%;
 " aria-labelledby="dropdownMenu2">
-      @foreach($kecamatan as $tampil)
-    <li><a class="" href="#">{{$tampil->kelurahan}}</a></li>
-    <br>
-   @endforeach
+     
   </ul>
 </div>
+<div class="col-6 text-right" style="width: 100%">        
+    {{-- <a class="alright btn btn-dark"  style="margin-top:10px;margin-bottom:10px;self-align:center; text-align: center; padding-top:10px;border-radius:10px; width:55%;height:70%" --}}
+    {{-- href="{{ route('kota_malang.show',$tampil->id) }}">Tampilkan</a> --}}
+</div>
+<div class="row" style="color:black">
+          <div class="box6 col">
+            <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:20px"><h3>Jumlah Penduduk </h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                        <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->jumlah_penduduk}}
+              @endforeach
+            </h3>
 
-  </div>
-  <div class="row">
-    <div class="col">        
-    <a class="alright btn btn-dark text-center" href="{{ route('kota_malang.show',$tampil->id) }}">Tampilkan</a>
+            </div>
+            </div>
+          </div>
+
+          <div class="box5 col"> <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:20px"><h3>Kepadatan Penduduk </h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                        <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->kepadatan_penduduk}}
+              @endforeach
+            </h3>
+
+            </div>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+          <div class="box6 col"> <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:20px"><h3>Jumlah Kartu Keluarga</h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                        <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->jumlah_kk}}
+              @endforeach
+            </h3>
+
+            </div>
+            </div>
+          </div>
+          <div class="box5 col"> <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:20px"><h3>Luas <br>Wilayah </h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                       <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->luas_wilayah}}
+              @endforeach
+            
+
+
+          <span style="font-size: 14px">(km &#178)<span>  </h3>
+            </div>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+          <div class="box6 col"> <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:20px"><h3>Jumlah Meninggal </h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                        <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->jumlah_meninggal}}
+              @endforeach
+            </h3>
+
+            </div>
+            </div>
+          </div>
+
+          <div class="box5 col"> <div class="row">
+            <div class="col" style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px"><h3>Wajib KTP </h3></div>
+            <div class="col"style="justify-content: left;
+    align-items: center; text-align:center;padding-top:35px">
+                        <h3>
+              @foreach($detail_laporan as $tampil)
+                      {{$tampil->wajib_ktp}}
+              @endforeach
+            </h3>
+
+            </div>
+            </div>
+          </div>
+
 </div>
   </div>
+  
                 <div class="row imageGallery1" id="gallery">
 
                     {{-- @foreach($infovaksin as $tampil)

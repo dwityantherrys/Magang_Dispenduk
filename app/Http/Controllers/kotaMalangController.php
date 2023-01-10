@@ -62,17 +62,7 @@ class kotaMalangController extends Controller
         
     
     }
-     public function detail($id_kel)
-    {
-        //
-        $jenisdata = jenisdata::all(); 
-        $kecamatan = kecamatan::find($id_kel);
-        $laporan = laporan::select('id','id_kelurahans', 'tahun', 'semester' , 'id_jenis_datas' , 'value')->where('id_kelurahans', $id_kel)->with('kecamatan','jenisdata')->get();
-        return $this-> view ('kota_malang.detail', compact('kecamatan','laporan','jenisdata','kotamalang'));
-        // return redirect('masuk/kota_malang/' . $id);
-        
-    
-    }
+   
  
     /**
      * Show the form for editing the specified resource.

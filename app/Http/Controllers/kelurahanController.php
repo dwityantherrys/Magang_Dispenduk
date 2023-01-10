@@ -139,6 +139,7 @@ class kelurahanController extends Controller
   
        $kecamatan = kecamatan::find($id);
         $detail_laporan=detail_laporan::orderBy('id','ASC')->with('kecamatan')->where('id_kelurahans',$id)->get();
+        
         return view('kelurahan.tampil', compact('kecamatan','detail_laporan'));
         
     

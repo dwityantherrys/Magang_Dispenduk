@@ -2,54 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\kotamalang;
 use App\Models\kecamatan;
-use App\Models\laporan;
-use App\Models\jenisdata;
-use Illuminate\Http\Request;
-class foruser extends Controller
+use App\Models\detail_laporan;
+class demoController extends Controller
 {
+
     public function index()
     {
-         $kotamalang = kotamalang::all();
-        $kecamatan = kecamatan::all();
-        $jenisdata = jenisdata::all();
-        $laporan = laporan::all();
-        return view('demo.tampil', compact('demo','kecamatan','laporan','jenisdata','kotamalang'));
+        $kotamalang=kotamalang::all();
+        $kecamatan=kecamatan::all();
+        $detail_laporan = detail_laporan::all();
+        return view('demo.tampil', compact('kotamalang','kecamatan','detail_laporan'));
     }
-    public function about()
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\kotamalang  $kotamalang
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return view('about');
-    }
-    public function akomodasi()
-    {
-        return view('akomodasi');
-    }
-    public function galeri()
-    {
-      
+  $kotamalang=kotamalang::all();
+        $kecamatan = kecamatan::find($id);
+        $detail_laporan=detail_laporan::orderBy('id','ASC')->with('kecamatan')->where('id_kelurahans',$id)->get();
         
-        
-    }
-      public function show($id)
-    {
-        //
-        // $kotamalang = kotamalang::find($id);
-        // $kecamatan = kecamatan::select('id','id_kecamatans', 'kelurahan')->where('id_kecamatans', $id)->get();
-        // return view ('kelurahan.show', compact('kecamatan','kotamalang'));
-      
-      $kotamalang = kotamalang::find($id);
-        $kecamatan = kecamatan::select('id','id_kecamatans', 'kelurahan')->where('id_kecamatans', $id)->get();
-        return view ('demo.show', compact('kecamatan','kotamalang'));
+        return view('demo.show', compact('kecamatan','detail_laporan'));
         
     
     }
-    public function kontak()
+   
+ 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\kotamalang  $kotamalang
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        return view('kontak');
+        //
+
+        $kotamalang = kotamalang::find($id);
+        return view ('kota_malang.edit', compact('kotamalang'));
     }
-    public function home2()
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\kotamalang  $kotamalang
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        return view('home2');
+        //
+        $kotamalang = \App\Models\kotamalang::find($id);
+        $kotamalang->kecamatan = $request ->kecamatan;
+        $kotamalang->save();
+
+
+
+        return redirect('masuk/kota_malang');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\kotamalang  $kotamalang
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+        $kotamalang = kotamalang::find($id);
+        $kotamalang->delete();
+
+        return redirect('masuk/kota_malang');
     }
 }
