@@ -60,7 +60,7 @@ segarkan=setTimeout("bergerak()",kecepatan);}bergerak();
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a class="nav-link" href="/">Beranda</a></li>
-                            <li class="nav-item {{ request()->is('galeri') ? 'active' : '' }}"><a class="nav-link" href="/galeri">Demo Demografi</a></li>
+                            <li class="nav-item {{ request()->is('galeri') ? 'active' : '' }}"><a class="nav-link" href="{{ route('demo.index') }}">Demo Demografi</a></li>
                             {{-- <li class="nav-item {{ request()->is('about') ? 'active' : '' }}"><a class="nav-link" href="/about">About Us</a></li> --}}
                             <li class="nav-item {{ request()->is('kontak') ? 'active' : '' }}"><a class="nav-link js-scroll-trigger" href="#footer">Hubungi Kami</a></li>
                             <li class="nav-item"><a class="nav-link" href="/masuk" style="color:rgb(255, 255, 255)">Login</a></li>

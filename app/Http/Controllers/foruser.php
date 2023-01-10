@@ -7,6 +7,8 @@ use App\Models\kecamatan;
 use App\Models\laporan;
 use App\Models\jenisdata;
 use Illuminate\Http\Request;
+
+use App\Models\detail_laporan;
 class foruser extends Controller
 {
     public function index()
@@ -25,22 +27,12 @@ class foruser extends Controller
     {
         $kotamalang = kotamalang::all();
         $kecamatan = kecamatan::all();
-        $jenisdata = jenisdata::all();
-        $laporan = laporan::all();
-        return view('galeri', compact('kecamatan','laporan','jenisdata','kotamalang'));
+        $detail_laporan = detail_laporan::all();
+        return view('galeri', compact('kecamatan','detail_laporan','kotamalang'));
         
         
     }
-    public function geleri($id)
-    {
-        //
-        $kotamalang = kotamalang::find($id);
-        $kecamatan = kecamatan::select('id','id_kecamatans', 'kelurahan')->where('id_kecamatans', $id)->get();
-        return view ('demo.tampil', compact('kecamatan','kotamalang'));
-        // return redirect('masuk/kota_malang/' . $id);
-        
-    
-    }
+
     public function kontak()
     {
         return view('kontak');
